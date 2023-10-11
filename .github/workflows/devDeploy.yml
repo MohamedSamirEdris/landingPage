@@ -1,0 +1,32 @@
+on:
+  push:
+    branches:
+      - main
+name: 🚀 Development Auto Deploy
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 14
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.18.3'
+
+      - name: 🔨 Build Project
+        run: |
+          npm install
+          CI=false npm run build
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: detailslocal.com
+          username: ${{ secrets.FTP_DEV_USERNAME }}
+          password: ${{ secrets.FTP_DEV_PWD }}
+          dangerous-clean-slate: true
+          server-dir: public_html/
+          local-dir: ./dist/

@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Frutiger LT Arabic';
+  src: url('./assets/fonts/frutiger-normal-450-100.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'light';
+  src: url('./assets/fonts/Frutiger\ LT\ Arabic\ 45\ Light-normal-650-100.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  direction: rtl;
+  font-family: 'Frutiger LT Arabic';
+}
+
+.second-font-class {
+  font-family: 'light', 'Frutiger LT Arabic';
+}
+
+.services {
+  background-image: url('./assets/images/use-cases-bg.png');
+}
